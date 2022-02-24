@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <meta lang="en">
+    <title>Joe's Hotdogs</title>
+    <script src="/script.js"></script>
+    <link rel="stylesheet" href="/style0.css">
+
+</header>
+<body>
+    <div id="main-container">
+        <h1>Joe's Hotdogs</h1>
+        <div id="menu">
+            <div>HotDog</div>
+            <div>$4.00</div>
+            <div>Fries</div>
+            <div>$3.50</div>
+            <div>Soda</div>
+            <div>$1.50</div>
+            <div>Sauerkraut</div>
+            <div>$1.00</div>
+        </div>
+        <form id="order" action="#">
+            <ul>
+                <li><label>Number of hotdogs: <input class="menu-item" type="number" name="hotdog" min="1" max="25"></label></li>
+                <li><label>Number of fries: <input class="menu-item" type="number" name="fries" min="1" max="10"></label></li>
+                <li><label>Number of sodas: <input class="menu-item" type="number" name="soda" min="1" max="10"></label></li>
+                <li><label>Number of sauerkrauts <input class="menu-item" type="number" name="skraut" min="1" max="10"></label></li>
+            </ul>          
+            <input type="submit" name="order" value="Submit Order">
+        </form>
+        <div id="order-total">
+        </div>
+
+    </div>
+
+</body>
+</html>
