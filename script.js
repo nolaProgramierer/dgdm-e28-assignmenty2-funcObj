@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var sauerkraut = new OrderItem('sauerkraut', 1);
 
     document.querySelector('input[type=submit]').addEventListener('click', function (e) {
+        // Clear div for repeat orders
+        document.querySelector('#ordered-items-list').innerHTML = "";
         // Associative array of quantities
         var quantities = getQuantity();
         // Add order quantities to array and calculate new array key values
@@ -26,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('#order-total').innerHTML = "Your order total is: $" + total.toFixed(2);
         // Clear values from form
         document.querySelector('form').reset();
+         // Display ordered items
+         showOrderedItems(quantities);
         // Prevent page refresh
         e.preventDefault();
     });
@@ -60,6 +64,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         console.log(total);
         return total;
+    }
+
+    function showOrderedItems(q) {
+        let allOrderItems = [hotdog, fries, soda, sauerkraut];
+        let orderList = document.querySelector('#ordered-items-list');
+        for (let i = 0; i < allOrderItems.length; i++) {
+            allOrderItems[i].num = q[i];
+            let li = document.createElement('li');
+            li.innerText = allOrderItems[i].num + ": " + allOrderItems[i].name;
+            orderList.appendChild(li);
+        }
     }
     console.log("DOM content parsed and loaded");
 }); // end DOMContentLoaded
