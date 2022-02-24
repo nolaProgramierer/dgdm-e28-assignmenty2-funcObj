@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
 
-    function OrderItem(item, price) {
+    function OrderItem(item, price, num = 0) {
         this.item = item;
         this.price = price;
+        this.num = num;
+        this.itemTotal = function() {
+            return (this.num * this.price);
+        }
     }
     
     var hotdog = new OrderItem('hotdog', 4.5);
@@ -31,9 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function getQuantity() {
         let quantities = [];
         let allMenuItems = document.querySelectorAll('.menu-item');
-       for (let i = 0; i < allMenuItems.length; i++) {
-           quantities.push(allMenuItems[i].value);
-           }
+        for (let i = 0; i < allMenuItems.length; i++) {
+            quantities.push(allMenuItems[i].value);
+            }
         console.log(quantities);
         return quantities;
     }
@@ -42,7 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
         let prices = [];
         let allOrderItems = [hotdog, fries, soda, sauerkraut];
         for( let i = 0; i < allOrderItems.length; i++) {
-            prices.push(allOrderItems[i].price * q[i]);
+            allOrderItems[i].num = q[i];
+            prices.push(allOrderItems[i].itemTotal());
         }
         console.log(prices);
         return prices;
