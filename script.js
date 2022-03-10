@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var sauerkraut = new OrderItem('sauerkraut', 1);
 
     document.querySelector('input[type=submit]').addEventListener('click', function (e) {
+        console.log("click");
         // Clear div for repeat orders
         document.querySelector('#ordered-items-list').innerHTML = "";
         // Associative array of quantities
@@ -72,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let i = 0; i < allOrderItems.length; i++) {
             allOrderItems[i].num = q[i];
             let li = document.createElement('li');
-            li.innerText = allOrderItems[i].num + ": " + allOrderItems[i].name;
+            li.innerText = allOrderItems[i].num + ": " + allOrderItems[i].item;
             orderList.appendChild(li);
         }
     }
